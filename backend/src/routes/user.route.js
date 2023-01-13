@@ -39,7 +39,7 @@ router.post(
 		.isLength({ min: 8 })
 		.withMessage('displayName minimum 8 characters'),
 	requestHandler.validate,
-	userController.signup
+	userController.signUp
 )
 
 router.post(
@@ -55,7 +55,7 @@ router.post(
 		.isLength({ min: 8 })
 		.withMessage('password minimum 8 characters'),
 	requestHandler.validate,
-	userController.signin
+	userController.signIn
 )
 
 router.put(
