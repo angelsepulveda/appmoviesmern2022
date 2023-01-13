@@ -2,3 +2,4 @@
 /backend/mongo
 /backend/.env
 /backend/dist
+/frontend/node_modules
