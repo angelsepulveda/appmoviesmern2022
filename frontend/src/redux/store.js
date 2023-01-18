@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import appSlice from './features/appSlice'
+import appStateSlice from './features/appStateSlice'
 import authModalSlice from './features/authModalSlice'
 import globalLoadingSlice from './features/globalLoadingSlice'
 import themeModeSlice from './features/themeModeSlice'
@@ -10,7 +10,7 @@ const store = configureStore({
 	reducer: {
 		user: userSlice,
 		themeMode: themeModeSlice,
-		appState: appSlice,
+		appState: appStateSlice,
 		authModal: authModalSlice,
 		globalLoading: globalLoadingSlice
 	}
