@@ -9,7 +9,7 @@ const userEndpoints = {
 }
 
 const userApi = {
-	signin: async ({ username, password }) => {
+	signIn: async ({ username, password }) => {
 		try {
 			const response = await publicClient.post(userEndpoints.signIn, { username, password })
 
@@ -19,7 +19,7 @@ const userApi = {
 			return { err }
 		}
 	},
-	signup: async ({ username, password, confirmPassword, displayName }) => {
+	signUp: async ({ username, password, confirmPassword, displayName }) => {
 		try {
 			const response = await publicClient.post(userEndpoints.signUp, {
 				username,

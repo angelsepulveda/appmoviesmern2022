@@ -4,11 +4,11 @@ import { Drawer, List, ListItemButton, ListItemIcon, ListItemText, Stack, Toolba
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import menuConfigs from '../../config/menu.config'
 import { themeModes } from '../../config/theme.config'
+import uiConfigs from '../../config/ui.config'
 import { setThemeMode } from '../../redux/features/themeModeSlice'
-import menuConfigs from './../../config/menu.config'
-import uiConfigs from './../../config/ui.config'
-import Logo from './Logo'
+import Logo from '../shared/Logo'
 
 const Sidebar = ({ open, toggleSidebar }) => {
 	const dispatch = useDispatch()

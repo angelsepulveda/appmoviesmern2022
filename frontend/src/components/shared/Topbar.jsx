@@ -6,13 +6,13 @@ import { cloneElement, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import Sidebar from '../navigations/Sidebar'
+import UserMenu from '../navigations/UserMenu'
 import menuConfigs from './../../config/menu.config'
 import { themeModes } from './../../config/theme.config'
 import { setAuthModalOpen } from './../../redux/features/authModalSlice'
 import { setThemeMode } from './../../redux/features/themeModeSlice'
 import Logo from './Logo'
-import Sidebar from './Sidebar'
-import UserMenu from './UserMenu'
 
 const ScrollAppBar = ({ children, window }) => {
 	const { themeMode } = useSelector(state => state.themeMode)
