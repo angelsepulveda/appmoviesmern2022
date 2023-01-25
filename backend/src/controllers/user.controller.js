@@ -14,7 +14,7 @@ const signUp = async (req, res) => {
 
 		user.displayName = displayName
 		user.username = username
-		user.setPassoword(password)
+		user.setPassword(password)
 
 		await user.save()
 

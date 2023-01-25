@@ -9,11 +9,12 @@ const modelOptions = {
 	toObject: {
 		virtuals: true,
 		transform: (_, obj) => {
-			delete Object._id
+			delete obj._id
 			return obj
 		}
 	},
 	versionKey: false,
 	timestamps: true
 }
+
 export default modelOptions

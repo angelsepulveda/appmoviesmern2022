@@ -46,7 +46,7 @@ const AuthModal = () => {
 						<Logo />
 					</Box>
 					{action === actionState.signIn && <SignInForm switchAuthState={() => switchAuthState(actionState.signUp)} />}
-					{action === actionState.signUp && <SignUpForm switchAuthState={() => switchAuthState(actionState.signUp)} />}
+					{action === actionState.signUp && <SignUpForm switchAuthState={() => switchAuthState(actionState.signIn)} />}
 				</Box>
 			</Box>
 		</Modal>
