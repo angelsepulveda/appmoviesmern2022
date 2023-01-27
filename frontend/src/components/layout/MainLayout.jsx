@@ -50,7 +50,6 @@ const MainLayout = () => {
 					<Outlet />
 				</Box>
 			</Box>
-
 			<Footer />
 		</>
 	)

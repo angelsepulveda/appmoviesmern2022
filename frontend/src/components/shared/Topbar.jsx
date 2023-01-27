@@ -85,7 +85,7 @@ const Topbar = () => {
 							</IconButton>
 						</Box>
 						<Stack spacing={3} direction="row" alignItems="center">
-							{!user && (
+							{user && (
 								<Button variant="contained" onClick={() => dispatch(setAuthModalOpen(true))}>
 									sing in
 								</Button>
