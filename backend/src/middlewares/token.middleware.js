@@ -7,7 +7,7 @@ const tokenDecode = req => {
 		const bearerHeader = req.headers.authorization
 
 		if (bearerHeader) {
-			const token = bearerHeader.split('')[1]
+			const token = bearerHeader.split(' ')[1]
 
 			return jsonwebtoken.verify(token, process.env.TOKEN_SECRET)
 		}
@@ -20,6 +20,7 @@ const tokenDecode = req => {
 
 const auth = async (req, res, next) => {
 	const tokenDecoded = tokenDecode(req)
+
 	if (!tokenDecoded) return responseHandler.unauthorize(res)
 
 	const user = await userModel.findById(tokenDecoded.data)

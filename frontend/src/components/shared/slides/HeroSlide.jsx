@@ -7,13 +7,13 @@ import { toast } from 'react-toastify'
 import { Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import tmdbConfigs from '../../api/config/tmdb.config'
-import genreApi from '../../api/modules/genre.api'
-import mediaApi from '../../api/modules/media.api'
-import uiConfig from '../../config/ui.config'
-import { setGlobalLoading } from '../../redux/features/globalLoadingSlice'
-import { routesGen } from '../../routes/routes'
-import CircularRate from '../shared/CircularRate'
+import tmdbConfigs from '../../../api/config/tmdb.config'
+import genreApi from '../../../api/modules/genre.api'
+import mediaApi from '../../../api/modules/media.api'
+import uiConfig from '../../../config/ui.config'
+import { setGlobalLoading } from '../../../redux/features/globalLoadingSlice'
+import { routesGen } from '../../../routes/routes'
+import CircularRate from '../CircularRate'
 
 const HeroSlide = ({ mediaType, mediaCategory }) => {
 	const theme = useTheme()
