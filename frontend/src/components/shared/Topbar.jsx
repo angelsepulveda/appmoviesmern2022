@@ -40,7 +40,7 @@ const Topbar = () => {
 
 	const dispatch = useDispatch()
 
-	const onSwitchTheme = () => {
+	const onSwithTheme = () => {
 		const theme = themeMode === themeModes.dark ? themeModes.light : themeModes.dark
 		dispatch(setThemeMode(theme))
 	}
@@ -57,10 +57,13 @@ const Topbar = () => {
 							<IconButton color="inherit" sx={{ mr: 2, display: { md: 'none' } }} onClick={toggleSidebar}>
 								<MenuIcon />
 							</IconButton>
+
 							<Box sx={{ display: { xs: 'inline-block', md: 'none' } }}>
 								<Logo />
 							</Box>
 						</Stack>
+
+						{/* main menu */}
 						<Box flexGrow={1} alignItems="center" display={{ xs: 'none', md: 'flex' }}>
 							<Box sx={{ marginRight: '30px' }}>
 								<Logo />
@@ -79,19 +82,23 @@ const Topbar = () => {
 									{item.display}
 								</Button>
 							))}
-							<IconButton sx={{ color: 'inherit' }} onClick={onSwitchTheme}>
+							<IconButton sx={{ color: 'inherit' }} onClick={onSwithTheme}>
 								{themeMode === themeModes.dark && <DarkModeOutlinedIcon />}
 								{themeMode === themeModes.light && <WbSunnyOutlinedIcon />}
 							</IconButton>
 						</Box>
+						{/* main menu */}
+
+						{/* user menu */}
 						<Stack spacing={3} direction="row" alignItems="center">
 							{!user && (
 								<Button variant="contained" onClick={() => dispatch(setAuthModalOpen(true))}>
-									sing in
+									sign in
 								</Button>
 							)}
 						</Stack>
 						{user && <UserMenu />}
+						{/* user menu */}
 					</Toolbar>
 				</AppBar>
 			</ScrollAppBar>
