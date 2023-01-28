@@ -1,89 +1,90 @@
-import responseHandler from '../handlers/response.handler.js'
-import UserModel from '../models/user.model.js'
-import FavoriteModel from '../models/favorite.model.js'
-import ReviewModel from '../models/review.model.js'
-import tmdbApi from '../tmdb/tmdb.api.js'
-import tokenMiddleware from '../middlewares/token.middleware.js'
+import responseHandler from "../handlers/response.handler.js";
+import tmdbApi from "../tmdb/tmdb.api.js";
+import userModel from "../models/user.model.js";
+import favoriteModel from "../models/favorite.model.js";
+import reviewModel from "../models/review.model.js";
+import tokenMiddlerware from "../middlewares/token.middleware.js";
 
 const getList = async (req, res) => {
 	try {
-		const { page } = req.query
-		const { mediaType, mediaCategory } = req.params
+		const { page } = req.query;
+		const { mediaType, mediaCategory } = req.params;
 
-		const response = await tmdbApi.mediaList({ mediaType, mediaCategory, page })
+		const response = await tmdbApi.mediaList({ mediaType, mediaCategory, page });
 
-		return responseHandler.ok(res, response)
+		return responseHandler.ok(res, response);
 	} catch {
-		responseHandler.error(res)
+		responseHandler.error(res);
 	}
-}
+};
 
 const getGenres = async (req, res) => {
 	try {
-		const { mediaType } = req.params
+		const { mediaType } = req.params;
 
-		const response = await tmdbApi.mediaGenres({ mediaType })
+		const response = await tmdbApi.mediaGenres({ mediaType });
 
-		return responseHandler.ok(res, response)
+		return responseHandler.ok(res, response);
 	} catch {
-		responseHandler.error(res)
+		responseHandler.error(res);
 	}
-}
+};
 
 const search = async (req, res) => {
 	try {
-		const { mediaType } = req.params
-		const { query, page } = req.query
+		const { mediaType } = req.params;
+		const { query, page } = req.query;
 
 		const response = await tmdbApi.mediaSearch({
 			query,
 			page,
-			mediaType: mediaType === 'people' ? 'person' : mediaType
-		})
+			mediaType: mediaType === "people" ? "person" : mediaType
+		});
 
-		return responseHandler.ok(res, response)
+		responseHandler.ok(res, response);
 	} catch {
-		responseHandler.error(res)
+		responseHandler.error(res);
 	}
-}
+};
 
 const getDetail = async (req, res) => {
 	try {
-		const { mediaType, mediaId } = req.params
+		const { mediaType, mediaId } = req.params;
 
-		const params = { mediaType, mediaId }
+		const params = { mediaType, mediaId };
 
-		const media = await tmdbApi.mediaDetail(params)
+		const media = await tmdbApi.mediaDetail(params);
 
-		media.credits = await tmdbApi.mediaCredits(params)
+		media.credits = await tmdbApi.mediaCredits(params);
 
-		const videos = await tmdbApi.mediaVideos(params)
+		const videos = await tmdbApi.mediaVideos(params);
 
-		media.videos = videos
+		media.videos = videos;
 
-		const recommend = await tmdbApi.mediaRecommend(params)
+		const recommend = await tmdbApi.mediaRecommend(params);
 
-		media.recommend = recommend.results
+		media.recommend = recommend.results;
 
-		media.images = await tmdbApi.mediaImages(params)
+		media.images = await tmdbApi.mediaImages(params);
 
-		const tokenDecoded = tokenMiddleware.tokenDecoded(req)
+		const tokenDecoded = tokenMiddlerware.tokenDecode(req);
 
 		if (tokenDecoded) {
-			const user = await UserModel.findById(tokenDecoded.data)
+			const user = await userModel.findById(tokenDecoded.data);
 
 			if (user) {
-				const isFavorite = FavoriteModel.findOne({ user: user.id, mediaId })
-				media.isFavorite = isFavorite !== null
+				const isFavorite = await favoriteModel.findOne({ user: user.id, mediaId });
+				media.isFavorite = isFavorite !== null;
 			}
 		}
 
-		media.reviews = await ReviewModel.find({ mediaId }).populate('user').sort('-createdAt')
+		media.reviews = await reviewModel.find({ mediaId }).populate("user").sort("-createdAt");
 
-		return responseHandler.ok(res, media)
-	} catch {
-		responseHandler.error(res)
+		responseHandler.ok(res, media);
+	} catch (e) {
+		console.log(e);
+		responseHandler.error(res);
 	}
-}
+};
 
-export default { search, getDetail, getGenres, getList }
+export default { getList, getGenres, search, getDetail };

@@ -1,4 +1,7 @@
 import 'react-toastify/dist/ReactToastify.css'
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
@@ -10,7 +13,6 @@ import MainLayout from './components/layout/MainLayout'
 import PageWrapper from './components/shared/PageWrapper'
 import themeConfigs from './config/theme.config'
 import routes from './routes/routes'
-
 const App = () => {
 	const { themeMode } = useSelector(state => state.themeMode)
 
