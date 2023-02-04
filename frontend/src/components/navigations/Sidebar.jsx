@@ -1,6 +1,7 @@
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
 import { Drawer, List, ListItemButton, ListItemIcon, ListItemText, Stack, Toolbar, Typography } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -12,12 +13,12 @@ import Logo from '../shared/Logo'
 
 const Sidebar = ({ open, toggleSidebar }) => {
 	const dispatch = useDispatch()
-
+	const [t] = useTranslation('global')
 	const { user } = useSelector(state => state.user)
 	const { appState } = useSelector(state => state.appState)
 	const { themeMode } = useSelector(state => state.themeMode)
 
-	const sidebarWidth = uiConfigs.size.sidebarWidth
+	const sidebarWidth = uiConfigs.size.sidebarWith
 
 	const onSwitchTheme = () => {
 		const theme = themeMode === themeModes.dark ? themeModes.light : themeModes.dark
@@ -53,7 +54,7 @@ const Sidebar = ({ open, toggleSidebar }) => {
 						</ListItemIcon>
 						<ListItemText
 							disableTypography
-							primary={<Typography textTransform="uppercase">{item.display}</Typography>}
+							primary={<Typography textTransform="uppercase">{t(item.display)}</Typography>}
 						/>
 					</ListItemButton>
 				))}
@@ -77,7 +78,7 @@ const Sidebar = ({ open, toggleSidebar }) => {
 								<ListItemIcon>{item.icon}</ListItemIcon>
 								<ListItemText
 									disableTypography
-									primary={<Typography textTransform="uppercase">{item.display}</Typography>}
+									primary={<Typography textTransform="uppercase">{t(item.display)}</Typography>}
 								/>
 							</ListItemButton>
 						))}
@@ -95,7 +96,7 @@ const Sidebar = ({ open, toggleSidebar }) => {
 						disableTypography
 						primary={
 							<Typography textTransform="uppercase">
-								{themeMode === themeModes.dark ? 'dark mode' : 'light mode'}
+								{themeMode === themeModes.dark ? t('dark-mode') : t('light-mode')}
 							</Typography>
 						}
 					/>

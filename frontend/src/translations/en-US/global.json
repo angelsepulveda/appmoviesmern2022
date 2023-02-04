@@ -1,0 +1,19 @@
+{
+	"menu": {
+		"home": "Home",
+		"tv-series": "TV Series",
+		"search": "Search",
+		"movies": "Movies",
+		"user": {
+			"favorites": "favorites",
+			"reviews": "reviews",
+			"password-update": "password update",
+			"sign-out": "sign out"
+		}
+	},
+	"language": "English",
+	"spanish": "Spanish",
+	"english": "English",
+	"dark-mode": "dark mode",
+	"light-mode": "light mode"
+}

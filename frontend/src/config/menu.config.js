@@ -1,5 +1,6 @@
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
+import LanguageIcon from '@mui/icons-material/Language'
 import LiveTvOutlinedIcon from '@mui/icons-material/LiveTvOutlined'
 import LockResetOutlinedIcon from '@mui/icons-material/LockResetOutlined'
 import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined'
@@ -8,25 +9,25 @@ import SlideshowOutlinedIcon from '@mui/icons-material/SlideshowOutlined'
 
 const main = [
 	{
-		display: 'home',
+		display: 'menu.home',
 		path: '/',
 		icon: <HomeOutlinedIcon />,
 		state: 'home'
 	},
 	{
-		display: 'movies',
+		display: 'menu.movies',
 		path: '/movie',
 		icon: <SlideshowOutlinedIcon />,
 		state: 'movie'
 	},
 	{
-		display: 'tv series',
+		display: 'menu.tv-series',
 		path: '/tv',
 		icon: <LiveTvOutlinedIcon />,
 		state: 'tv'
 	},
 	{
-		display: 'search',
+		display: 'menu.search',
 		path: '/search',
 		icon: <SearchOutlinedIcon />,
 		state: 'search'
@@ -35,25 +36,38 @@ const main = [
 
 const user = [
 	{
-		display: 'favorites',
+		display: 'menu.user.favorites',
 		path: '/favorites',
 		icon: <FavoriteBorderOutlinedIcon />,
 		state: 'favorite'
 	},
 	{
-		display: 'reviews',
+		display: 'menu.user.reviews',
 		path: '/reviews',
 		icon: <RateReviewOutlinedIcon />,
 		state: 'reviews'
 	},
 	{
-		display: 'password update',
+		display: 'menu.user.password-update',
 		path: '/password-update',
 		icon: <LockResetOutlinedIcon />,
 		state: 'password.update'
 	}
 ]
 
-const menuConfigs = { main, user }
+const language = [
+	{
+		display: 'spanish',
+		icon: <LanguageIcon />,
+		value: 'es-ES'
+	},
+	{
+		display: 'english',
+		icon: <LanguageIcon />,
+		value: 'en-US'
+	}
+]
+
+const menuConfigs = { main, user, language }
 
 export default menuConfigs

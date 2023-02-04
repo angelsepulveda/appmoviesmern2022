@@ -3,9 +3,11 @@ import MenuIcon from '@mui/icons-material/Menu'
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
 import { AppBar, Box, Button, IconButton, Stack, Toolbar, useScrollTrigger } from '@mui/material'
 import { cloneElement, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import LanguageMenu from '../navigations/LanguageMenu'
 import Sidebar from '../navigations/Sidebar'
 import UserMenu from '../navigations/UserMenu'
 import menuConfigs from './../../config/menu.config'
@@ -32,6 +34,7 @@ const ScrollAppBar = ({ children, window }) => {
 }
 
 const Topbar = () => {
+	const [t] = useTranslation('global')
 	const { user } = useSelector(state => state.user)
 	const { appState } = useSelector(state => state.appState)
 	const { themeMode } = useSelector(state => state.themeMode)
@@ -79,7 +82,7 @@ const Topbar = () => {
 									to={item.path}
 									variant={appState.includes(item.state) ? 'contained' : 'text'}
 								>
-									{item.display}
+									{t(item.display)}
 								</Button>
 							))}
 							<IconButton sx={{ color: 'inherit' }} onClick={onSwithTheme}>
@@ -90,13 +93,15 @@ const Topbar = () => {
 						{/* main menu */}
 
 						{/* user menu */}
-						<Stack spacing={3} direction="row" alignItems="center">
+						<Stack spacing={3} direction="row" alignItems="center" sx={{ paddingRight: 5, sm: { padding: 0 } }}>
 							{!user && (
 								<Button variant="contained" onClick={() => dispatch(setAuthModalOpen(true))}>
 									sign in
 								</Button>
 							)}
+							{<LanguageMenu />}
 						</Stack>
+
 						{user && <UserMenu />}
 						{/* user menu */}
 					</Toolbar>

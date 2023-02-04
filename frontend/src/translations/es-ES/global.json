@@ -1,0 +1,19 @@
+{
+	"menu": {
+		"home": "Inicio",
+		"tv-series": "TV Series",
+		"search": "Buscar",
+		"movies": "Películas",
+		"user": {
+			"favorites": "favoritos",
+			"reviews": "reseñas",
+			"password-update": "actualizar contraseña",
+			"sign-out": "cerrar sesión"
+		}
+	},
+	"language": "Español",
+	"spanish": "Español",
+	"english": "Inglés",
+	"dark-mode": "Modo oscuro",
+	"light-mode": "Modo claro"
+}

@@ -1,6 +1,7 @@
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined'
 import { ListItemButton, ListItemIcon, ListItemText, Menu, Typography } from '@mui/material'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -9,6 +10,7 @@ import { setUser } from '../../redux/features/userSlice'
 
 const UserMenu = () => {
 	const { user } = useSelector(state => state.user)
+	const [t] = useTranslation('global')
 
 	const dispatch = useDispatch()
 
@@ -34,7 +36,7 @@ const UserMenu = () => {
 								<ListItemIcon>{item.icon}</ListItemIcon>
 								<ListItemText
 									disabledTypography
-									primary={<Typography textTransform="uppercase">{item.display}</Typography>}
+									primary={<Typography textTransform="uppercase">{t(item.display)}</Typography>}
 								></ListItemText>
 							</ListItemButton>
 						))}
@@ -42,7 +44,10 @@ const UserMenu = () => {
 							<ListItemIcon>
 								<LogoutOutlinedIcon />
 							</ListItemIcon>
-							<ListItemText disableTypography primary={<Typography textTransform="uppercase">sign out</Typography>} />
+							<ListItemText
+								disableTypography
+								primary={<Typography textTransform="uppercase">{t('menu.user.sign-out')}</Typography>}
+							/>
 						</ListItemButton>
 					</Menu>
 				</>
