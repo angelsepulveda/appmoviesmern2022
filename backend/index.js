@@ -6,7 +6,7 @@ import http from 'http'
 import mongoose from 'mongoose'
 import 'dotenv/config'
 
-import routes from './routes/index.js'
+import routes from './src/routes/index.js'
 
 import middleware from 'i18next-http-middleware'
 
