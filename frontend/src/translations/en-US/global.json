@@ -15,5 +15,44 @@
 	"spanish": "Spanish",
 	"english": "English",
 	"dark-mode": "dark mode",
-	"light-mode": "light mode"
+	"light-mode": "light mode",
+	"favorites": "Your favorites",
+	"search-movieFlix": "Search MovieFlix",
+	"password": "password",
+	"your-reviews": "Your reviews",
+	"remove-review": "Remove review success",
+	"medias": "medias",
+	"post": "Post review success",
+	"post-remove": "Remove review success",
+	"write-review": "Write your review",
+	"biography": "We don't have a biography of",
+	"watch-now": "Watch now",
+	"updatePassword": {
+		"new-password": "new password",
+		"confirm-password": "confirm password",
+		"update-password": "update password",
+		"updated": "'Update password success! Please re-login'"
+	},
+	"validations": {
+		"password": {
+			"min": "password minimum 8 characters",
+			"required": "password is required",
+			"confirm": "confirmNewPassword not match"
+		}
+	},
+	"home": {
+		"popular-movies": "popular movies",
+		"popular-series": "popular series",
+		"top-rated-movies": "top rated movies",
+		"top-rated-series": "top rated series"
+	},
+	"mediaDetail": {
+		"remove": "Remove favorite success",
+		"add": "Add favorite success",
+		"backdrops": "backdrops",
+		"posters": "posters",
+		"videos": "videos",
+		"like": "you may also like",
+		"cast": "Cast"
+	}
 }

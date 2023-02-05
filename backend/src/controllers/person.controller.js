@@ -5,7 +5,8 @@ const personDetail = async (req, res) => {
 	try {
 		const { personId } = req.params
 
-		const person = await tmdbApi.personDetail({ personId })
+		const lng = req.headers['accept-language']
+		const person = await tmdbApi.personDetail({ personId, lng })
 
 		responseHandler.ok(res, person)
 	} catch {
@@ -17,7 +18,8 @@ const personMedias = async (req, res) => {
 	try {
 		const { personId } = req.params
 
-		const medias = await tmdbApi.personMedias({ personId })
+		const lng = req.headers['accept-language']
+		const medias = await tmdbApi.personMedias({ personId, lng })
 
 		responseHandler.ok(res, medias)
 	} catch {

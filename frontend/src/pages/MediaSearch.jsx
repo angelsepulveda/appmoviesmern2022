@@ -1,6 +1,7 @@
 import { LoadingButton } from '@mui/lab'
 import { Box, Button, Stack, TextField, Toolbar } from '@mui/material'
 import { useCallback, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify'
 
 import mediaApi from '../api/modules/media.api'
@@ -17,6 +18,7 @@ const MediaSearch = () => {
 	const [mediaType, setMediaType] = useState(mediaTypes[0])
 	const [medias, setMedias] = useState([])
 	const [page, setPage] = useState(1)
+	const [t] = useTranslation('global')
 
 	const search = useCallback(async () => {
 		setOnSearch(true)
@@ -81,7 +83,7 @@ const MediaSearch = () => {
 					</Stack>
 					<TextField
 						color="success"
-						placeholder="Search MoonFlix"
+						placeholder={t('search-movieFlix')}
 						sx={{ width: '100%' }}
 						autoFocus
 						onChange={onQueryChange}

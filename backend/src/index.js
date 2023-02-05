@@ -1,3 +1,4 @@
+import path from 'path'
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
@@ -7,12 +8,30 @@ import 'dotenv/config'
 
 import routes from './routes/index.js'
 
+import middleware from 'i18next-http-middleware'
+
+import i18next from 'i18next'
+import Backend from 'i18next-fs-backend'
+
+i18next
+	.use(Backend)
+	.use(middleware.LanguageDetector)
+	.init({
+		fallbackLng: 'es',
+		lng: 'es-ES',
+		backend: {
+			loadPath: path.join(import.meta.url.split('/').slice(0, -1).join('/'), '/translations/{{lng}}/translation.json')
+		}
+	})
+
 const app = express()
 
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
+
+app.use(middleware.handle(i18next))
 
 app.use('/api/v1', routes)
 

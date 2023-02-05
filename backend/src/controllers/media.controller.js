@@ -10,7 +10,8 @@ const getList = async (req, res) => {
 		const { page } = req.query
 		const { mediaType, mediaCategory } = req.params
 
-		const response = await tmdbApi.mediaList({ mediaType, mediaCategory, page })
+		const lng = req.headers['accept-language']
+		const response = await tmdbApi.mediaList({ mediaType, mediaCategory, page, lng })
 
 		return responseHandler.ok(res, response)
 	} catch {
@@ -22,7 +23,8 @@ const getGenres = async (req, res) => {
 	try {
 		const { mediaType } = req.params
 
-		const response = await tmdbApi.mediaGenres({ mediaType })
+		const lng = req.headers['accept-language']
+		const response = await tmdbApi.mediaGenres({ mediaType, lng })
 
 		return responseHandler.ok(res, response)
 	} catch {
@@ -35,10 +37,12 @@ const search = async (req, res) => {
 		const { mediaType } = req.params
 		const { query, page } = req.query
 
+		const lng = req.headers['accept-language']
 		const response = await tmdbApi.mediaSearch({
 			query,
 			page,
-			mediaType: mediaType === 'people' ? 'person' : mediaType
+			mediaType: mediaType === 'people' ? 'person' : mediaType,
+			lng
 		})
 
 		responseHandler.ok(res, response)
@@ -51,7 +55,9 @@ const getDetail = async (req, res) => {
 	try {
 		const { mediaType, mediaId } = req.params
 
-		const params = { mediaType, mediaId }
+		const lng = req.headers['accept-language']
+
+		const params = { mediaType, mediaId, lng }
 
 		const media = await tmdbApi.mediaDetail(params)
 

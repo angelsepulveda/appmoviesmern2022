@@ -11,12 +11,12 @@ const publicClient = axios.create({
 })
 
 publicClient.interceptors.request.use(async config => {
-	return {
-		...config,
-		headers: {
-			'Content-Type': 'application/json'
-		}
-	}
+	config.headers['Accept-Language'] = localStorage.getItem('language')
+	config.headers['Content-Type'] = 'application/json'
+
+	console.log(config)
+
+	return config
 })
 
 publicClient.interceptors.response.use(

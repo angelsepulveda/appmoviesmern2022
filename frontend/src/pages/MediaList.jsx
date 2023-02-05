@@ -1,6 +1,7 @@
 import { LoadingButton } from '@mui/lab'
 import { Box, Button, Stack, Typography } from '@mui/material'
 import { useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -16,6 +17,7 @@ import { setGlobalLoading } from '../redux/features/globalLoadingSlice'
 
 const MediaList = () => {
 	const { mediaType } = useParams()
+	const [t] = useTranslation('global')
 
 	const [medias, setMedias] = useState([])
 	const [mediaLoading, setMediaLoading] = useState(false)
@@ -83,7 +85,7 @@ const MediaList = () => {
 					sx={{ marginBottom: 4 }}
 				>
 					<Typography fontWeight="700" variant="h5">
-						{mediaType === tmdbConfigs.mediaType.movie ? 'Movies' : 'TV Series'}
+						{mediaType === tmdbConfigs.mediaType.movie ? t('menu.movies') : t('tv-series')}
 					</Typography>
 					<Stack direction="row" spacing={2}>
 						{category.map((cate, index) => (

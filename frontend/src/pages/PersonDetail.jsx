@@ -1,5 +1,6 @@
 import { Box, Stack, Toolbar, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -15,6 +16,7 @@ const PersonDetail = () => {
 	const { personId } = useParams()
 	const [person, setPerson] = useState()
 	const dispatch = useDispatch()
+	const [t] = useTranslation('global')
 
 	useEffect(() => {
 		const getPerson = async () => {
@@ -69,11 +71,13 @@ const PersonDetail = () => {
 										{person.deathday && ` - ${person.deathday && person.deathday.split('-')[0]}`}
 										{')'}
 									</Typography>
-									<Typography sx={{ ...uiConfigs.style.typoLines(10) }}>{person.biography}</Typography>
+									<Typography sx={{ ...uiConfigs.style.typoLines(10) }}>
+										{person.biography.length > 0 ? person.biography : `${t('biography')} ${person.name}`}
+									</Typography>
 								</Stack>
 							</Box>
 						</Box>
-						<Container header="medias">
+						<Container header={t('medias')}>
 							<PersonMediaGrid personId={personId} />
 						</Container>
 					</Box>

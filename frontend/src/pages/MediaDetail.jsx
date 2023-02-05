@@ -4,6 +4,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import { LoadingButton } from '@mui/lab'
 import { Box, Button, Chip, Divider, Stack, Typography } from '@mui/material'
 import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -28,6 +29,7 @@ import { addFavorite, removeFavorite } from '../redux/features/userSlice'
 
 const MediaDetail = () => {
 	const { mediaType, mediaId } = useParams()
+	const [t] = useTranslation('global')
 
 	const { user, listFavorites } = useSelector(state => state.user)
 
@@ -87,7 +89,7 @@ const MediaDetail = () => {
 		if (response) {
 			dispatch(addFavorite(response))
 			setIsFavorite(true)
-			toast.success('Add favorite success')
+			toast.success(t('mediaDetail.add'))
 		}
 	}
 
@@ -105,7 +107,7 @@ const MediaDetail = () => {
 		if (response) {
 			dispatch(removeFavorite(favorite))
 			setIsFavorite(false)
-			toast.success('Remove favorite success')
+			toast.success(t('mediaDetail.remove'))
 		}
 	}
 
@@ -210,7 +212,7 @@ const MediaDetail = () => {
 										startIcon={<PlayArrowIcon />}
 										onClick={() => videoRef.current.scrollIntoView()}
 									>
-										watch now
+										{t('watch-now')}
 									</Button>
 								</Stack>
 								{/* buttons */}
@@ -229,7 +231,7 @@ const MediaDetail = () => {
 
 				{/* media videos */}
 				<div ref={videoRef} style={{ paddingTop: '2rem' }}>
-					<Container header="Videos">
+					<Container header={t('mediaDetail.videos')}>
 						<MediaVideosSlide videos={[...media.videos.results].splice(0, 5)} />
 					</Container>
 				</div>
@@ -237,7 +239,7 @@ const MediaDetail = () => {
 
 				{/* media backdrop */}
 				{media.images.backdrops.length > 0 && (
-					<Container header="backdrops">
+					<Container header={t('mediaDetail.backdrops')}>
 						<BackdropSlide backdrops={media.images.backdrops} />
 					</Container>
 				)}
@@ -245,7 +247,7 @@ const MediaDetail = () => {
 
 				{/* media posters */}
 				{media.images.posters.length > 0 && (
-					<Container header="posters">
+					<Container header={t('mediaDetail.posters')}>
 						<PosterSlide posters={media.images.posters} />
 					</Container>
 				)}
@@ -256,7 +258,7 @@ const MediaDetail = () => {
 				{/* media reviews */}
 
 				{/* media recommendation */}
-				<Container header="you may also like">
+				<Container header={t('mediaDetail.like')}>
 					{media.recommend.length > 0 && <RecommendSlide medias={media.recommend} mediaType={mediaType} />}
 					{media.recommend.length === 0 && (
 						<MediaSlide mediaType={mediaType} mediaCategory={tmdbConfigs.mediaCategory.top_rated} />

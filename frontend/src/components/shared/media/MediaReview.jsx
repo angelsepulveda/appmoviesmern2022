@@ -4,6 +4,7 @@ import { LoadingButton } from '@mui/lab'
 import { Box, Button, Divider, Stack, TextField, Typography } from '@mui/material'
 import dayjs from 'dayjs'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 
@@ -81,6 +82,7 @@ const MediaReview = ({ reviews, media, mediaType }) => {
 	const [onRequest, setOnRequest] = useState(false)
 	const [content, setContent] = useState('')
 	const [reviewCount, setReviewCount] = useState(0)
+	const [t] = useTranslation('global')
 
 	const skip = 4
 
@@ -108,7 +110,7 @@ const MediaReview = ({ reviews, media, mediaType }) => {
 
 		if (err) toast.error(err.message)
 		if (response) {
-			toast.success('Post review success')
+			toast.success(t('post'))
 
 			setFilteredReviews([...filteredReviews, response])
 			setReviewCount(reviewCount + 1)
@@ -132,12 +134,12 @@ const MediaReview = ({ reviews, media, mediaType }) => {
 
 		setReviewCount(reviewCount - 1)
 
-		toast.success('Remove review success')
+		toast.success(t('post-remove'))
 	}
 
 	return (
 		<>
-			<Container header={`Reviews (${reviewCount})`}>
+			<Container header={`${t('menu.user.reviews')} (${reviewCount})`}>
 				<Stack spacing={4} marginBottom={2}>
 					{filteredReviews.map(item => (
 						<Box key={item.id}>
@@ -165,7 +167,7 @@ const MediaReview = ({ reviews, media, mediaType }) => {
 									onChange={e => setContent(e.target.value)}
 									multiline
 									rows={4}
-									placeholder="Write your review"
+									placeholder={t('write-review')}
 									variant="outlined"
 								/>
 								<LoadingButton

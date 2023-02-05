@@ -2,6 +2,7 @@ import { LoadingButton } from '@mui/lab'
 import { Box, Stack, TextField } from '@mui/material'
 import { useFormik } from 'formik'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -18,6 +19,7 @@ const PasswordUpdate = () => {
 
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
+	const [t] = useTranslation('global')
 
 	const form = useFormik({
 		initialValues: {
@@ -26,12 +28,12 @@ const PasswordUpdate = () => {
 			confirmNewPassword: ''
 		},
 		validationSchema: Yup.object({
-			password: Yup.string().min(8, 'password minimum 8 characters').required('password is required'),
-			newPassword: Yup.string().min(8, 'newPassword minimum 8 characters').required('newPassword is required'),
+			password: Yup.string().min(8, t('validations.password.min')).required(t('validations.password.required')),
+			newPassword: Yup.string().min(8, t('validations.password.min')).required(t('validations.password.required')),
 			confirmNewPassword: Yup.string()
-				.oneOf([Yup.ref('newPassword')], 'confirmNewPassword not match')
-				.min(8, 'confirmNewPassword minimum 8 characters')
-				.required('confirmNewPassword is required')
+				.oneOf([Yup.ref('newPassword')], t('validations.password.confirm'))
+				.min(8, t('validations.password.min'))
+				.required(t('validations.password.required'))
 		}),
 		onSubmit: async values => onUpdate(values)
 	})
@@ -50,18 +52,18 @@ const PasswordUpdate = () => {
 			navigate('/')
 			dispatch(setUser(null))
 			dispatch(setAuthModalOpen(true))
-			toast.success('Update password success! Please re-login')
+			toast.success(t('updatePassword.updated'))
 		}
 	}
 
 	return (
 		<Box sx={{ ...uiConfigs.style.mainContent }}>
-			<Container header="update password">
+			<Container header={t('updatePassword.update-password')}>
 				<Box component="form" maxWidth="400px" onSubmit={form.handleSubmit}>
 					<Stack spacing={2}>
 						<TextField
 							type="password"
-							placeholder="password"
+							placeholder={t('password')}
 							name="password"
 							fullWidth
 							value={form.values.password}
@@ -72,7 +74,7 @@ const PasswordUpdate = () => {
 						/>
 						<TextField
 							type="password"
-							placeholder="new password"
+							placeholder={t('updatePassword.new-password')}
 							name="newPassword"
 							fullWidth
 							value={form.values.newPassword}
@@ -83,7 +85,7 @@ const PasswordUpdate = () => {
 						/>
 						<TextField
 							type="password"
-							placeholder="confirm new password"
+							placeholder={t('updatePassword.confirm-password')}
 							name="confirmNewPassword"
 							fullWidth
 							value={form.values.confirmNewPassword}
@@ -94,7 +96,7 @@ const PasswordUpdate = () => {
 						/>
 
 						<LoadingButton type="submit" variant="contained" fullWidth sx={{ marginTop: 4 }} loading={onRequest}>
-							update password
+							{t('updatePassword.update-password')}
 						</LoadingButton>
 					</Stack>
 				</Box>

@@ -1,33 +1,36 @@
 {
-  "name": "appmoviesmern2022",
-  "type": "module",
-  "version": "1.0.0",
-  "author": "Angel Sepulveda",
-  "description": "",
-  "main": "index.js",
-  "keywords": [],
-  "license": "MIT",
-  "scripts": {
-    "start": "nodemon src/index.js"
-  },
-  "dependencies": {
-    "axios": "^1.2.2",
-    "cookie-parser": "^1.4.6",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "express-validator": "^6.14.2",
-    "jsonwebtoken": "^9.0.0",
-    "mongoose": "^6.8.3"
-  },
-  "devDependencies": {
-    "eslint": "^8.0.1",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-n": "^15.0.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "nodemon": "^2.0.20",
-    "prettier": "^2.8.2"
-  }
+	"name": "appmoviesmern2022",
+	"type": "module",
+	"version": "1.0.0",
+	"author": "Angel Sepulveda",
+	"description": "",
+	"main": "index.js",
+	"keywords": [],
+	"license": "MIT",
+	"scripts": {
+		"start": "nodemon src/index.js"
+	},
+	"dependencies": {
+		"axios": "^1.2.2",
+		"cookie-parser": "^1.4.6",
+		"cors": "^2.8.5",
+		"dotenv": "^16.0.3",
+		"express": "^4.18.2",
+		"express-validator": "^6.14.2",
+		"jsonwebtoken": "^9.0.0",
+		"mongoose": "^6.8.3",
+		"i18next": "^22.4.6",
+		"i18next-fs-backend": "^2.1.1",
+		"i18next-http-middleware": "^3.2.1"
+	},
+	"devDependencies": {
+		"eslint": "^8.0.1",
+		"eslint-config-prettier": "^8.6.0",
+		"eslint-config-standard": "^17.0.0",
+		"eslint-plugin-import": "^2.25.2",
+		"eslint-plugin-n": "^15.0.0",
+		"eslint-plugin-promise": "^6.0.0",
+		"nodemon": "^2.0.20",
+		"prettier": "^2.8.2"
+	}
 }

@@ -14,6 +14,44 @@
 	"language": "Español",
 	"spanish": "Español",
 	"english": "Inglés",
+	"favorites": "Tus favoritos",
 	"dark-mode": "Modo oscuro",
-	"light-mode": "Modo claro"
+	"light-mode": "Modo claro",
+	"search-movieFlix": "Buscar MovieFlix",
+	"password": "contraseña",
+	"your-reviews": "Tus reseñas",
+	"write-review": "Escribe una reseña",
+	"remove-review": "La reseña se elimino correctamente",
+	"medias": "interpretación",
+	"post": "Reseña publicada correctamente",
+	"post-remove": "La reseña se elimino correctamente",
+	"biography": "No tenemos una biografía de",
+	"watch-now": "Ver ahora",
+	"updatePassword": {
+		"new-password": "nueva contraseña",
+		"confirm-password": "confirmar contraseña",
+		"update-password": "actualizar contraseña",
+		"updated": "¡Actualización de contraseña exitosa! Vuelva a iniciar sesión"
+	},
+	"validations": {
+		"password": {
+			"min": "contraseña debe tener al menos 8 caracteres",
+			"required": "contraseña es requerida",
+			"confirm": "las contraseñas no coinciden"
+		}
+	},
+	"home": {
+		"popular-movies": "peliculas populares",
+		"popular-series": "series populares",
+		"top-rated-movies": "peliculas mejor valoradas",
+		"top-rated-series": "series mejor valoradas"
+	},
+	"mediaDetail": {
+		"remove": "Favorito eliminado con éxito",
+		"backdrops": "fondos",
+		"posters": "posters",
+		"videos": "videos",
+		"like": "también te puede interesar",
+		"cast": "Reparto Principal"
+	}
 }

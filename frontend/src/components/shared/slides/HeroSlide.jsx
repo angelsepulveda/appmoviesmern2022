@@ -1,6 +1,7 @@
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import { Box, Button, Chip, Divider, Stack, Typography, useTheme } from '@mui/material'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -18,6 +19,7 @@ import CircularRate from '../CircularRate'
 const HeroSlide = ({ mediaType, mediaCategory }) => {
 	const theme = useTheme()
 	const dispatch = useDispatch()
+	const [t] = useTranslation('global')
 
 	const [movies, setMovies] = useState([])
 	const [genres, setGenres] = useState([])
@@ -177,7 +179,7 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
 										to={routesGen.mediaDetail(mediaType, movie.id)}
 										sx={{ width: 'max-content' }}
 									>
-										watch now
+										{t('watch-now')}
 									</Button>
 									{/* buttons */}
 								</Stack>

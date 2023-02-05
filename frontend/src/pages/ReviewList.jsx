@@ -3,6 +3,7 @@ import { LoadingButton } from '@mui/lab'
 import { Box, Button, Divider, Stack, Typography } from '@mui/material'
 import dayjs from 'dayjs'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -16,6 +17,7 @@ import { routesGen } from '../routes/routes'
 
 const ReviewItem = ({ review, onRemoved }) => {
 	const [onRequest, setOnRequest] = useState(false)
+	const [t] = useTranslation('global')
 
 	const onRemove = async () => {
 		if (onRequest) return
@@ -25,7 +27,7 @@ const ReviewItem = ({ review, onRemoved }) => {
 
 		if (err) toast.error(err.message)
 		if (response) {
-			toast.success('Remove review success')
+			toast.success(t('remove-review'))
 			onRemoved(review.id)
 		}
 	}
@@ -99,6 +101,7 @@ const ReviewList = () => {
 	const [filteredReviews, setFilteredReviews] = useState([])
 	const [page, setPage] = useState(1)
 	const [count, setCount] = useState(0)
+	const [t] = useTranslation('global')
 
 	const dispatch = useDispatch()
 
@@ -135,7 +138,7 @@ const ReviewList = () => {
 
 	return (
 		<Box sx={{ ...uiConfigs.style.mainContent }}>
-			<Container header={`Your reviews (${count})`}>
+			<Container header={`${t('your-reviews')} (${count})`}>
 				<Stack spacing={2}>
 					{filteredReviews.map(item => (
 						<Box key={item.id}>

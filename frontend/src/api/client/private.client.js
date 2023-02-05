@@ -11,13 +11,12 @@ const privateClient = axios.create({
 })
 
 privateClient.interceptors.request.use(async config => {
-	return {
-		...config,
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: `Bearer ${localStorage.getItem('actkn')}`
-		}
-	}
+	config.headers['Accept-Language'] = localStorage.getItem('language')
+	config.headers['Content-Type'] = 'application/json'
+
+	console.log(config)
+
+	return config
 })
 
 privateClient.interceptors.response.use(
