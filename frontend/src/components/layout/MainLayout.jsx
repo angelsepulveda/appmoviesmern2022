@@ -39,7 +39,6 @@ const MainLayout = () => {
 		if (user) getFavorites()
 		if (!user) dispatch(setListFavorites([]))
 	}, [user, dispatch])
-
 	return (
 		<>
 			<GlobalLoading />

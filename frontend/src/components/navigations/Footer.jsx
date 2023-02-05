@@ -14,7 +14,7 @@ const Footer = () => {
 				<Stack
 					alignItems="center"
 					justifyContent="space-between"
-					direcction={{ xs: 'column', md: 'row' }}
+					direction={{ xs: 'column', md: 'row ' }}
 					sx={{ height: 'max-content' }}
 				>
 					<Logo />

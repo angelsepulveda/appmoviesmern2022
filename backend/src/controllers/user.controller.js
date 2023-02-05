@@ -59,13 +59,15 @@ const updatePassword = async (req, res) => {
 	try {
 		const { password, newPassword } = req.body
 
-		const user = await UserModel.findById(req.user.id).select(' password id salt')
+		const user = await UserModel.findById(req.user.id).select('password id salt')
 
 		if (!user) return responseHandler.unauthorize(res)
 
-		if (!user.validPassword(password)) return responseHandler.badRequest(res, 'Wrong password')
+		if (!user.validPassword(password)) return responseHandler.badrequest(res, 'Wrong password')
 
-		user.setPassoword(newPassword)
+		user.setPassword(newPassword)
+
+		await user.save()
 
 		responseHandler.ok(res)
 	} catch {

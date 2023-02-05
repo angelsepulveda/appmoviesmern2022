@@ -13,8 +13,8 @@ import userApi from './../../api/modules/user.api'
 const SignInForm = ({ switchAuthState }) => {
 	const dispatch = useDispatch()
 
-	const [isLoadingRequest, setLoadingRequest] = useState(false)
-	const [errorMessage, setErrorMessage] = useState('')
+	const [isLoadingRequest, setIsLoadingRequest] = useState(false)
+	const [errorMessage, setErrorMessage] = useState()
 
 	const signInForm = useFormik({
 		initialValues: {
@@ -26,10 +26,10 @@ const SignInForm = ({ switchAuthState }) => {
 			password: Yup.string().min(8, 'password minimum 8 characters').required('password is required')
 		}),
 		onSubmit: async values => {
-			setErrorMessage('')
-			setLoadingRequest(true)
+			setErrorMessage(undefined)
+			setIsLoadingRequest(true)
 			const { response, err } = await userApi.signIn(values)
-			setLoadingRequest(false)
+			setIsLoadingRequest(false)
 
 			if (response) {
 				signInForm.resetForm()
@@ -57,7 +57,7 @@ const SignInForm = ({ switchAuthState }) => {
 					helperText={signInForm.touched.username && signInForm.errors.username}
 				/>
 				<TextField
-					type="text"
+					type="password"
 					placeholder="password"
 					fullWidth
 					name="password"

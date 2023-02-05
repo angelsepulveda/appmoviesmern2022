@@ -11,7 +11,6 @@ const userEndpoints = {
 const userApi = {
 	signIn: async ({ username, password }) => {
 		try {
-			console.log('send request')
 			const response = await publicClient.post(userEndpoints.signin, { username, password })
 
 			return { response }

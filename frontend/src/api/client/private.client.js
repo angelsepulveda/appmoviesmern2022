@@ -13,9 +13,8 @@ const privateClient = axios.create({
 privateClient.interceptors.request.use(async config => {
 	config.headers['Accept-Language'] = localStorage.getItem('language')
 	config.headers['Content-Type'] = 'application/json'
-
-	console.log(config)
-
+	// eslint-disable-next-line dot-notation
+	config.headers['Authorization'] = `Bearer ${localStorage.getItem('actkn')}`
 	return config
 })
 

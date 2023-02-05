@@ -14,8 +14,6 @@ publicClient.interceptors.request.use(async config => {
 	config.headers['Accept-Language'] = localStorage.getItem('language')
 	config.headers['Content-Type'] = 'application/json'
 
-	console.log(config)
-
 	return config
 })
 
