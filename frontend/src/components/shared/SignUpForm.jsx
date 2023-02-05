@@ -16,7 +16,7 @@ const SignUpForm = ({ switchAuthState }) => {
 	const [t] = useTranslation('global')
 
 	const [isLoadingRequest, setLoadingRequest] = useState(false)
-	const [errorMessage, setErrorMessage] = useState('')
+	const [errorMessage, setErrorMessage] = useState(null)
 
 	const signUpForm = useFormik({
 		initialValues: {
@@ -42,6 +42,7 @@ const SignUpForm = ({ switchAuthState }) => {
 				dispatch(setUser(response))
 				dispatch(setAuthModalOpen(false))
 				toast.success(t('sign-in-success'))
+				errorMessage(null)
 			}
 
 			if (err) setErrorMessage(err.message)
@@ -110,7 +111,7 @@ const SignUpForm = ({ switchAuthState }) => {
 				{' '}
 				{t('sign-in')}
 			</Button>
-			{errorMessage !== '' && (
+			{errorMessage !== null && (
 				<Box sx={{ marginTop: 2 }}>
 					<Box sx={{ marginTop: 2 }}>
 						<Alert severity="error" variant="outlined">

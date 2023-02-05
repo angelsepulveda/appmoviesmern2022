@@ -58,6 +58,7 @@
 	},
 	"mediaDetail": {
 		"remove": "Favorito eliminado con éxito",
+		"add": "Agregado a tus favoritos con éxito",
 		"backdrops": "fondos",
 		"posters": "posters",
 		"videos": "videos",
