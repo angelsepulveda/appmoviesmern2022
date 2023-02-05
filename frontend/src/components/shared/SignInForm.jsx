@@ -16,7 +16,7 @@ const SignInForm = ({ switchAuthState }) => {
 	const [t] = useTranslation('global')
 
 	const [isLoadingRequest, setIsLoadingRequest] = useState(false)
-	const [errorMessage, setErrorMessage] = useState()
+	const [errorMessage, setErrorMessage] = useState(null)
 
 	const signInForm = useFormik({
 		initialValues: {
@@ -84,7 +84,7 @@ const SignInForm = ({ switchAuthState }) => {
 				{' '}
 				{t('sign-up')}
 			</Button>
-			{errorMessage !== '' && (
+			{errorMessage !== null && (
 				<Box sx={{ marginTop: 2 }}>
 					<Box sx={{ marginTop: 2 }}>
 						<Alert severity="error" variant="outlined">

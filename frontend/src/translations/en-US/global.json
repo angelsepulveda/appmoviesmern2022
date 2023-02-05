@@ -42,6 +42,7 @@
 	"validations": {
 		"user": "username minimum 8 characters",
 		"user-required": "username is required",
+		"password-required": "password is required",
 		"displayname": "display name minimum 5 characters",
 		"displayname-required": "display name is required",
 		"password": {

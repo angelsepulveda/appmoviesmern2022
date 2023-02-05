@@ -41,6 +41,7 @@
 	},
 	"validations": {
 		"user": "el usuario debe contener al menos 8 caracteres",
+		"password-required": "contraseña es requerida",
 		"user-required": "usuario es requerido",
 		"display-name": "el nombre debe contener al menos 5 caracteres",
 		"display-name-required": "el nombre es requerido",
