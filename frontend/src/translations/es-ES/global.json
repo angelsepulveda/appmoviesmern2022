@@ -29,7 +29,7 @@
 	"watch-now": "Ver ahora",
 	"password-confirm": "confirmar contraseña",
 	"displayname": "usuario",
-	"username": "nombre",
+	"username": "email",
 	"sign-in": "Ingresar",
 	"sign-up": "Registrarse",
 	"sign-in-success": "inicio de sesion exitoso",
@@ -40,9 +40,9 @@
 		"updated": "¡Actualización de contraseña exitosa! Vuelva a iniciar sesión"
 	},
 	"validations": {
-		"user": "el usuario debe contener al menos 8 caracteres",
+		"user": "el email debe contener al menos 8 caracteres",
 		"password-required": "contraseña es requerida",
-		"user-required": "usuario es requerido",
+		"user-required": "email es requerido",
 		"display-name": "el nombre debe contener al menos 5 caracteres",
 		"display-name-required": "el nombre es requerido",
 		"password": {

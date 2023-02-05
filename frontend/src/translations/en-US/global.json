@@ -29,7 +29,7 @@
 	"biography": "We don't have a biography of",
 	"watch-now": "Watch now",
 	"displayname": "Display name",
-	"username": "username",
+	"username": "email",
 	"sign-in-success": "Sign in success",
 	"sign-in": "Sign in",
 	"sign-up": "Sign up",
@@ -40,8 +40,8 @@
 		"updated": "'Update password success! Please re-login'"
 	},
 	"validations": {
-		"user": "username minimum 8 characters",
-		"user-required": "username is required",
+		"user": "email minimum 8 characters",
+		"user-required": "email is required",
 		"password-required": "password is required",
 		"displayname": "display name minimum 5 characters",
 		"displayname-required": "display name is required",
