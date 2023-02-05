@@ -1,4 +1,5 @@
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
+import PersonIcon from '@mui/icons-material/Person'
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
 import { Drawer, List, ListItemButton, ListItemIcon, ListItemText, Stack, Toolbar, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
@@ -10,6 +11,7 @@ import { themeModes } from '../../config/theme.config'
 import uiConfigs from '../../config/ui.config'
 import { setThemeMode } from '../../redux/features/themeModeSlice'
 import Logo from '../shared/Logo'
+import { setAuthModalOpen } from './../../redux/features/authModalSlice'
 
 const Sidebar = ({ open, toggleSidebar }) => {
 	const dispatch = useDispatch()
@@ -83,6 +85,18 @@ const Sidebar = ({ open, toggleSidebar }) => {
 							</ListItemButton>
 						))}
 					</>
+				)}
+
+				{!user && (
+					<ListItemButton onClick={() => dispatch(setAuthModalOpen(true))}>
+						<ListItemIcon>
+							<PersonIcon />
+						</ListItemIcon>
+						<ListItemText
+							disableTypography
+							primary={<Typography textTransform="uppercase">{t('sign-in')}</Typography>}
+						/>
+					</ListItemButton>
 				)}
 				<Typography variant="h6" marginBottom="20px">
 					THEME
