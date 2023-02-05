@@ -27,6 +27,12 @@
 	"post-remove": "La reseña se elimino correctamente",
 	"biography": "No tenemos una biografía de",
 	"watch-now": "Ver ahora",
+	"password-confirm": "confirmar contraseña",
+	"displayname": "usuario",
+	"username": "nombre",
+	"sign-in": "Ingresar",
+	"sign-up": "Registrarse",
+	"sign-in-success": "inicio de sesion exitoso",
 	"updatePassword": {
 		"new-password": "nueva contraseña",
 		"confirm-password": "confirmar contraseña",
@@ -34,6 +40,10 @@
 		"updated": "¡Actualización de contraseña exitosa! Vuelva a iniciar sesión"
 	},
 	"validations": {
+		"user": "el usuario debe contener al menos 8 caracteres",
+		"user-required": "usuario es requerido",
+		"display-name": "el nombre debe contener al menos 5 caracteres",
+		"display-name-required": "el nombre es requerido",
 		"password": {
 			"min": "contraseña debe tener al menos 8 caracteres",
 			"required": "contraseña es requerida",

@@ -19,6 +19,7 @@
 	"favorites": "Your favorites",
 	"search-movieFlix": "Search MovieFlix",
 	"password": "password",
+	"password-confirm": "password confirm",
 	"your-reviews": "Your reviews",
 	"remove-review": "Remove review success",
 	"medias": "medias",
@@ -27,6 +28,11 @@
 	"write-review": "Write your review",
 	"biography": "We don't have a biography of",
 	"watch-now": "Watch now",
+	"displayname": "Display name",
+	"username": "username",
+	"sign-in-success": "Sign in success",
+	"sign-in": "Sign in",
+	"sign-up": "Sign up",
 	"updatePassword": {
 		"new-password": "new password",
 		"confirm-password": "confirm password",
@@ -34,6 +40,10 @@
 		"updated": "'Update password success! Please re-login'"
 	},
 	"validations": {
+		"user": "username minimum 8 characters",
+		"user-required": "username is required",
+		"displayname": "display name minimum 5 characters",
+		"displayname-required": "display name is required",
 		"password": {
 			"min": "password minimum 8 characters",
 			"required": "password is required",

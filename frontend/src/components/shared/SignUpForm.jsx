@@ -2,6 +2,7 @@ import { LoadingButton } from '@mui/lab'
 import { Alert, Box, Button, Stack, TextField } from '@mui/material'
 import { useFormik } from 'formik'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
@@ -12,6 +13,7 @@ import userApi from './../../api/modules/user.api'
 
 const SignUpForm = ({ switchAuthState }) => {
 	const dispatch = useDispatch()
+	const [t] = useTranslation('global')
 
 	const [isLoadingRequest, setLoadingRequest] = useState(false)
 	const [errorMessage, setErrorMessage] = useState('')
@@ -24,10 +26,10 @@ const SignUpForm = ({ switchAuthState }) => {
 			confirmPassword: ''
 		},
 		validationSchema: Yup.object({
-			username: Yup.string().min(8, 'username minimum 8 characters').required('username is required'),
-			password: Yup.string().min(8, 'password minimum 8 characters').required('password is required'),
-			displayName: Yup.string().min(5, 'password minimum 5 characters').required('displayName is required'),
-			confirmPassword: Yup.string().min(8, 'password minimum 8 characters').required('password is required')
+			username: Yup.string().min(8, t('validations.user')).required(t('validations.user-required')),
+			password: Yup.string().min(8, t('validations.password.min')).required(t('validations.password.required')),
+			displayName: Yup.string().min(5, t('validations.displayname')).required(t('validations.displayname-required')),
+			confirmPassword: Yup.string().min(8, t('validations.password.min')).required(t('validations.password.required'))
 		}),
 		onSubmit: async values => {
 			setErrorMessage('')
@@ -39,7 +41,7 @@ const SignUpForm = ({ switchAuthState }) => {
 				signUpForm.resetForm()
 				dispatch(setUser(response))
 				dispatch(setAuthModalOpen(false))
-				toast.success('Sign in success')
+				toast.success(t('sign-in-success'))
 			}
 
 			if (err) setErrorMessage(err.message)
@@ -62,7 +64,7 @@ const SignUpForm = ({ switchAuthState }) => {
 				/>
 				<TextField
 					type="text"
-					placeholder="display name"
+					placeholder={t('displayname')}
 					fullWidth
 					name="displayName"
 					value={signUpForm.values.displayName}
@@ -73,7 +75,7 @@ const SignUpForm = ({ switchAuthState }) => {
 				/>
 				<TextField
 					type="password"
-					placeholder="password"
+					placeholder={t('password')}
 					fullWidth
 					name="password"
 					value={signUpForm.values.password}
@@ -84,7 +86,7 @@ const SignUpForm = ({ switchAuthState }) => {
 				/>
 				<TextField
 					type="password"
-					placeholder="confirm password"
+					placeholder={t('password-confirm')}
 					fullWidth
 					name="confirmPassword"
 					value={signUpForm.values.confirmPassword}
@@ -102,11 +104,11 @@ const SignUpForm = ({ switchAuthState }) => {
 				sx={{ marginTop: 4 }}
 				loading={isLoadingRequest}
 			>
-				Sign Up
+				{t('sign-up')}
 			</LoadingButton>
 			<Button fullWidth sx={{ marginTop: 1 }} onClick={() => switchAuthState()}>
 				{' '}
-				Sign In
+				{t('sign-in')}
 			</Button>
 			{errorMessage !== '' && (
 				<Box sx={{ marginTop: 2 }}>

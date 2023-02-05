@@ -2,6 +2,7 @@ import { LoadingButton } from '@mui/lab'
 import { Alert, Box, Button, Stack, TextField } from '@mui/material'
 import { useFormik } from 'formik'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import * as Yup from 'yup'
@@ -12,6 +13,7 @@ import userApi from './../../api/modules/user.api'
 
 const SignInForm = ({ switchAuthState }) => {
 	const dispatch = useDispatch()
+	const [t] = useTranslation('global')
 
 	const [isLoadingRequest, setIsLoadingRequest] = useState(false)
 	const [errorMessage, setErrorMessage] = useState()
@@ -22,8 +24,8 @@ const SignInForm = ({ switchAuthState }) => {
 			username: ''
 		},
 		validationSchema: Yup.object({
-			username: Yup.string().min(8, 'username minimum 8 characters').required('username is required'),
-			password: Yup.string().min(8, 'password minimum 8 characters').required('password is required')
+			username: Yup.string().min(8, t('validations.user')).required(t('validations.user-required')),
+			password: Yup.string().min(8, t('validations.password.min')).required(t('validations.password-required'))
 		}),
 		onSubmit: async values => {
 			setErrorMessage(undefined)
@@ -35,7 +37,7 @@ const SignInForm = ({ switchAuthState }) => {
 				signInForm.resetForm()
 				dispatch(setUser(response))
 				dispatch(setAuthModalOpen(false))
-				toast.success('Sign in success')
+				toast.success(t('sign-in-success'))
 			}
 
 			if (err) setErrorMessage(err.message)
@@ -47,7 +49,7 @@ const SignInForm = ({ switchAuthState }) => {
 			<Stack spacing={3}>
 				<TextField
 					type="text"
-					placeholder="username"
+					placeholder={t('username')}
 					fullWidth
 					name="username"
 					value={signInForm.values.username}
@@ -58,7 +60,7 @@ const SignInForm = ({ switchAuthState }) => {
 				/>
 				<TextField
 					type="password"
-					placeholder="password"
+					placeholder={t('password')}
 					fullWidth
 					name="password"
 					value={signInForm.values.password}
@@ -76,11 +78,11 @@ const SignInForm = ({ switchAuthState }) => {
 				sx={{ marginTop: 4 }}
 				loading={isLoadingRequest}
 			>
-				Sign in
+				{t('sign-in')}
 			</LoadingButton>
 			<Button fullWidth sx={{ marginTop: 1 }} onClick={() => switchAuthState()}>
 				{' '}
-				Sign up
+				{t('sign-up')}
 			</Button>
 			{errorMessage !== '' && (
 				<Box sx={{ marginTop: 2 }}>

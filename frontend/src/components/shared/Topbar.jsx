@@ -96,7 +96,7 @@ const Topbar = () => {
 						<Stack spacing={3} direction="row" alignItems="center" sx={{ paddingRight: 5, sm: { padding: 0 } }}>
 							{!user && (
 								<Button variant="contained" onClick={() => dispatch(setAuthModalOpen(true))}>
-									sign in
+									{t('sign-in')}
 								</Button>
 							)}
 							{<LanguageMenu />}
